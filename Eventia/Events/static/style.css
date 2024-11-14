@@ -1,5 +1,4 @@
 
-/* Video background styling */
 #background-video {
     position: fixed;
     top: 0;
@@ -7,7 +6,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2; /* Behind everything */
+    z-index: -2;
 }
 
 /* Overlay styling */
@@ -17,25 +16,29 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Darker transparent black overlay */
-    z-index: -1; /* Above the video but below content */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
 /* Notification Bar Styling */
 .notification-bar {
-    position: relative;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 15px 25px;
-    background-color: rgba(0, 0, 0, 0.8); /* Solid dark background for readability */
+    position: fixed; /* Keep it fixed on the page */
+    top: calc(56px + 2rem); /* 56px is the typical navbar height; add 2rem spacing */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    max-width: 600px; /* Optional: Adjust width as needed */
+    padding: 15px 25px; /* Add padding for content spacing */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for visibility */
     color: #ffffff; /* White text */
     font-size: 14px;
     font-family: Arial, sans-serif;
     text-align: center;
     border-radius: 10px; /* Slightly rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    z-index: 1; /* Above overlay, below the main content */
+    z-index: 1050; /* Ensure it appears above other elements */
 }
+
+
 
 /* Link styling for notification bar */
 .notification-bar a {
