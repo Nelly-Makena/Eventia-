@@ -8,7 +8,9 @@
     object-fit: cover;
     z-index: -2;
 }
-
+body {
+      padding-top: 10rem; /* Ensure the body content does not overlap with the fixed navbar */
+    }
 /* Overlay styling */
 .video-overlay {
     position: fixed;
@@ -141,4 +143,377 @@
 
 .hero-section .content .link:hover {
     color: #0077b6; /* Darker cyan for hover */
+}
+/* Adjust the body padding to account for the navbar */
+
+
+/* Navbar styling */
+
+
+/* Form Container Margin */
+
+/* Card Styling */
+.card {
+    border-radius: 10px; /* Rounded edges */
+    overflow: hidden; /* Ensure internal content doesn't overflow */
+}
+
+.card-header {
+    font-size: 1.25rem; /* Larger header font */
+    text-transform: uppercase; /* Make header text uppercase */
+}
+
+/* Input Fields */
+.form-control {
+    border-radius: 5px; /* Rounded input edges */
+    border: 1px solid #ced4da; /* Subtle border color */
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #00b4d8; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5); /* Add glow effect */
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #00b4d8; /* Bright cyan */
+    border: none; /* Remove default border */
+}
+
+.btn-primary:hover {
+    background-color: #0077b6; /* Darker cyan on hover */
+}
+
+/* Alert Messages */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    color: #842029;
+}
+
+
+/* Login Card */
+.login-card {
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    width: 400px; /* Adjust form width */
+    padding: 50px 40px; /* Padding for better spacing */
+    text-align: center;
+    margin-left:45rem;
+
+}
+
+/* Logo in Header */
+.login-header .logo {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Adjusted padding for compact height */
+    border: 1px solid #ced4da; /* Subtle border */
+    border-radius: 8px; /* Rounded input edges */
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease;
+    background-color: #f8f9fa; /* Light blue background for inputs */
+}
+
+input:focus {
+    border-color: #00b4d8; /* Blue focus border */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5); /* Subtle glow on focus */
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%; /* Full width button */
+    background-color: #00b4d8; /* Bright blue button */
+    color: #ffffff;
+    border: none; /* Remove default border */
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px; /* Match rounded corners with input */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0077b6; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+/* Footer */
+.login-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+.login-footer p {
+    margin: 0;
+}
+/* Navbar Styling */
+/* Navbar Styling */
+.plain-navbar {
+    background-color: #e3f2fd; /* Light blue background */
+    height: 60px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure it stays above other content */
+    padding: 0 20px; /* Add spacing on the left and right */
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left */
+    width: 100%;
+}
+
+/* Logo Styling */
+.navbar-logo {
+    height: 40px; /* Adjust logo height */
+    margin-left: 10px; /* Add spacing from the left */
+}
+/* Registration Form Container */
+/* Registration Form Container */
+
+
+/* Registration Card */
+.registration-card {
+    background-color: #ffffff; /* White card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 400px; /* Fixed width */
+    padding: 30px;
+    text-align: center;
+    margin-left:45rem;
+
+}
+
+/* Header Section */
+.registration-header {
+    margin-bottom: 20px;
+}
+
+.registration-logo {
+    height: 50px; /* Adjust logo height */
+    margin-bottom: 10px;
+}
+
+.registration-header h2 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text for contrast */
+    margin: 0;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f9fa; /* Slightly gray background for inputs */
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #00b4d8; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5); /* Subtle glow effect */
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0077b6; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+/* Footer Section */
+.registration-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+.registration-footer a {
+    color: #00b4d8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.registration-footer a:hover {
+    text-decoration: underline;
+    color: #0077b6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .registration-card {
+        width: 90%; /* Expand card width on smaller screens */
+    }
+}
+
+
+/* Registration Card */
+.registration-card {
+    background-color: #ffffff; /* White card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 400px; /* Fixed width */
+    padding: 30px;
+    text-align: center;
+}
+
+/* Header Section */
+.registration-header {
+    margin-bottom: 20px;
+}
+
+.registration-logo {
+    height: 50px; /* Adjust logo height */
+    margin-bottom: 10px;
+}
+
+.registration-header h2 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text for contrast */
+    margin: 0;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f9fa; /* Slightly gray background for inputs */
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #00b4d8; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5); /* Subtle glow effect */
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0077b6; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+/* Footer Section */
+.registration-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+.registration-footer a {
+    color: #00b4d8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.registration-footer a:hover {
+    text-decoration: underline;
+    color: #0077b6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .registration-card {
+        width: 90%; /* Expand card width on smaller screens */
+    }
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .login-card {
+        width: 90%; /* Make login card wider on smaller screens */
+    }
 }
