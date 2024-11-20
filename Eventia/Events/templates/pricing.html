@@ -1,0 +1,582 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<style>
+    /* General Styling */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font style */
+    }
+
+    /* Intro Section Styling */
+    .intro-section {
+        background-color: #007BFF;
+        color: white;
+        text-align: center;
+        padding: 60px 20px; /* Reduced padding to remove extra white space */
+        margin-top: -16px; /* Aligns it flush with the navbar */
+    }
+
+    .intro-section h1 {
+        font-size: 3rem; /* Adjust for visibility */
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .intro-section p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .start-button {
+        background-color: white;
+        color: #5fa6e8; /* Adjusted lighter blue for the button text */
+        border: none;
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        border-radius: 25px; /* Rounded corners */
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .start-button:hover {
+        background-color: #4e94cf; /* Slightly darker blue on hover */
+        color: white;
+    }
+
+    /* Pricing Section Styling */
+
+    .pricing-section {
+        background-color: #ffffff;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .pricing-section h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .pricing-section p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        color: #666;
+    }
+
+    /* Ticket Currency Dropdown Styling */
+    .ticket-currency {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .ticket-currency select {
+        margin-left: 10px;
+        padding: 8px 12px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: white;
+    }
+    /* Payment Plans Section Styling */
+    .payment-plans {
+        background-color: #ffffff; /* White background */
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .payment-plans h2 {
+        font-size: 2.5rem;
+        font-family: 'Poppins', sans-serif; /* Modern font for headings */
+        font-weight: bold;
+        color: #333; /* Dark gray text */
+        margin-bottom: 40px;
+    }
+
+    .plan-cards {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between cards */
+        flex-wrap: wrap; /* Adjusts for smaller screens */
+    }
+
+    .plan-card {
+        background-color: #f9f9f9; /* Light gray */
+        border: 1px solid #ddd; /* Subtle border */
+        border-radius: 10px;
+        width: 350px; /* Adjusted width */
+        padding: 30px; /* Increased padding */
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-family: 'Roboto', sans-serif; /* Modern and clean font */
+    }
+
+    .plan-card:hover {
+        transform: translateY(-5px); /* Slight lift on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    }
+
+    .plan-title {
+        font-size: 1.8rem; /* Larger title */
+        font-family: 'Poppins', sans-serif; /* Bold and modern font for titles */
+        font-weight: bold;
+        color: #007BFF; /* Blue for titles */
+        margin-bottom: 20px;
+    }
+
+    .plan-price {
+        font-size: 2.5rem;
+        color: #333; /* Dark gray */
+        margin: 15px 0; /* Adjusted margin */
+        font-family: 'Roboto', sans-serif; /* Clean font for price */
+    }
+
+    .plan-benefits {
+        list-style: none;
+        padding: 0;
+        font-size: 1.1rem; /* Slightly larger text */
+        color: #666; /* Light gray text */
+        margin-bottom: 30px; /* Increased bottom margin */
+        line-height: 2; /* Better spacing between items */
+        text-align: left; /* Left-align for readability */
+        padding-left: 15px; /* Indentation for list */
+    }
+
+    .plan-benefits li {
+        margin-bottom: 12px; /* Extra space between items */
+    }
+
+    .plan-button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 12px 25px; /* Increased button size */
+        font-size: 1.1rem; /* Larger font */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .plan-button:hover {
+        background-color: #0056b3; /* Darker blue */
+    }
+
+    /* Plan Specific Colors */
+    .plan-basic .plan-title {
+        color: #5fa6e8; /* Lighter blue */
+    }
+
+    .plan-pro .plan-title {
+        color: #ff9800; /* Orange for Pro */
+    }
+
+    .plan-custom .plan-title {
+        color: #28a745; /* Green for Custom */
+    }
+    /* Note Section Styling */
+.note-section {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 10px 20px; /* Reduced padding for smaller height */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center-align the text */
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    font-size: 0.9rem; /* Slightly smaller text size */
+    color: #6c757d; /* Subtle gray text */
+    margin: 20px auto; /* Center horizontally and add vertical spacing */
+    max-width: 800px; /* Limit the width for a smaller box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+/* FAQ Section Styling */
+.faq-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.faq-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.faq-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: #f8f9fa;
+    color: #333;
+    text-align: left;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #e2e6ea;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.faq-answer {
+    display: none;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #666;
+}
+/* Footer Section Styling */
+/* Footer Section */
+.footer-section {
+    background-color: #1c1c1c; /* Dark gray background */
+    color: #fff; /* White text */
+    padding: 50px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensure responsiveness */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+/* Footer Column */
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Ensure columns don't get too small */
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #f8f9fa; /* Slightly lighter gray for titles */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    display: block;
+    font-size: 0.9rem; /* Slightly smaller font */
+    color: #bbb; /* Light gray links */
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #1e90ff; /* Bright blue on hover */
+    transform: translateX(5px); /* Slight movement on hover */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777; /* Subtle gray for the bottom text */
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+
+    .footer-link {
+        margin-bottom: 12px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-row {
+        flex-wrap: wrap; /* Wrap links on smaller screens */
+        gap: 10px;
+    }
+
+    .footer-link {
+        margin-bottom: 10px;
+        font-size: 0.85rem; /* Adjust font size for smaller screens */
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faq-section {
+        width: 90%;
+    }
+
+    .faq-title {
+        font-size: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 0.9rem;
+    }
+}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .plan-card {
+            width: 90%; /* Full width on smaller screens */
+        }
+    }
+</style>
+
+<div class="intro-section">
+    <h1>Get started for free. No credit card required.</h1>
+    <p>Choose a plan that suits your needs</p>
+    <button class="start-button" onclick="scrollToPlans()">Get Started Now</button>
+
+</div>
+
+<div class="pricing-section">
+    <h2>Compare our flexible plans and choose what works for your events</h2>
+    <p>Avoid ticketing fees by passing them on to attendees</p>
+    <div class="ticket-currency">
+        <label for="currency">I want to sell tickets in</label>
+        <select id="currency">
+            <option value="USD">US Dollar</option>
+            <option value="KES">Kenyan Shilling</option>
+            <option value="EUR">Euro</option>
+        </select>
+    </div>
+</div>
+
+   <div id="plans" class="payment-plans">
+    <h2>Choose Your Payment Plan</h2>
+    <div class="plan-cards">
+        <!-- Basic Plan -->
+        <div class="plan-card plan-basic">
+            <h3 class="plan-title">Basic Plan</h3>
+            <p class="plan-price">$9.99/month</p>
+            <ul class="plan-benefits">
+                <li>Access to 5 events</li>
+                <li>Email support</li>
+                <li>Basic analytics</li>
+                <li>Access to free templates</li>
+                <li>Mobile app support</li>
+                <li>Community forum access</li>
+                <li>Event reminders via email</li>
+                <li>Standard security features</li>
+            </ul>
+            <button class="plan-button">Get Basic</button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="plan-card plan-pro">
+            <h3 class="plan-title">Pro Plan</h3>
+            <p class="plan-price">$29.99/month</p>
+            <ul class="plan-benefits">
+                <li>Access to unlimited events</li>
+                <li>Priority customer support</li>
+                <li>Advanced analytics and insights</li>
+                <li>Event branding and customization tools</li>
+                <li>Integrations with third-party tools</li>
+                <li>Team collaboration features</li>
+                <li>Social media integration for promotions</li>
+                <li>Event ticketing and payment processing</li>
+                <li>24/7 customer support</li>
+                <li>Enhanced security and encryption</li>
+            </ul>
+            <button class="plan-button">Get Pro</button>
+        </div>
+
+        <!-- Custom Plan -->
+        <div class="plan-card plan-custom">
+            <h3 class="plan-title">Custom Plan</h3>
+            <p class="plan-price">Contact Us</p>
+            <ul class="plan-benefits">
+                <li>Tailored to your specific needs</li>
+                <li>Dedicated account manager</li>
+                <li>Custom integrations with your systems</li>
+                <li>Unlimited team members</li>
+                <li>Premium branding and customization</li>
+                <li>24/7 priority customer support</li>
+                <li>Advanced reporting and analytics</li>
+                <li>Custom API access</li>
+                <li>Training and onboarding for your team</li>
+                <li>Exclusive premium features</li>
+            </ul>
+            <button class="plan-button">Contact Us</button>
+        </div>
+    </div>
+</div>
+<div class="note-section">
+    <p>
+        Note: Eventzilla platform fees do not include payment processing fees. These are payable depending on your chosen payment provider.
+    </p>
+</div>
+<div class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Is Eventzilla free for free events?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>Eventzilla is free if your event is free for your attendees. This works for most simple events like gatherings and meetups. For additional features like customizing the event page to match your brand, premium bundles are available for a flat fee.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Are there any upfront costs or subscription fees?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>There are no upfront costs for basic usage. Subscription fees apply only if you choose advanced plans or premium features.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            What are payment processing fees?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>Payment processing fees depend on the payment provider and typically range from 2% to 4% of the transaction value.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            When will I receive my remittances?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>Remittances are processed within 3-5 business days after the event is concluded, depending on your payment provider.</p>
+        </div>
+    </div>
+</div>
+<footer class="footer-section">
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-column">
+            <h4 class="footer-title">About Us</h4>
+            <ul class="footer-links">
+                <li><a href="#" class="footer-link">Pricing</a></li>
+                <li><a href="#" class="footer-link">Customers</a></li>
+                <li><a href="#" class="footer-link">Integrations</a></li>
+                <li><a href="#" class="footer-link">About the Company</a></li>
+                <li><a href="#" class="footer-link">Blog</a></li>
+                <li><a href="#" class="footer-link">API</a></li>
+            </ul>
+        </div>
+
+        <!-- Solutions Section -->
+        <div class="footer-column">
+            <h4 class="footer-title">Solutions</h4>
+            <ul class="footer-links">
+                <li><a href="#" class="footer-link">Event Management</a></li>
+                <li><a href="#" class="footer-link">Event Surveys</a></li>
+                <li><a href="#" class="footer-link">Sell Tickets Online</a></li>
+                <li><a href="#" class="footer-link">Event Website Builder</a></li>
+                <li><a href="#" class="footer-link">Custom Reports</a></li>
+                <li><a href="#" class="footer-link">Nonprofits & Fundraisers</a></li>
+            </ul>
+        </div>
+
+        <!-- Virtual Events Section -->
+        <div class="footer-column">
+            <h4 class="footer-title">Virtual Events</h4>
+            <ul class="footer-links">
+                <li><a href="#" class="footer-link">Webinar Registration</a></li>
+                <li><a href="#" class="footer-link">Zoom Scheduler</a></li>
+                <li><a href="#" class="footer-link">Queue Management</a></li>
+                <li><a href="#" class="footer-link">White Label Ticketing</a></li>
+                <li><a href="#" class="footer-link">Virtual Event Hosting</a></li>
+                <li><a href="#" class="footer-link">Yoga Classes</a></li>
+            </ul>
+        </div>
+
+        <!-- Connect Section -->
+        <div class="footer-column">
+            <h4 class="footer-title">Connect with Us</h4>
+            <ul class="footer-links">
+                <li><a href="#" class="footer-link">Contact Support</a></li>
+                <li><a href="#" class="footer-link">Help Center</a></li>
+                <li><a href="#" class="footer-link">Twitter</a></li>
+                <li><a href="#" class="footer-link">Facebook</a></li>
+                <li><a href="#" class="footer-link">LinkedIn</a></li>
+                <li><a href="#" class="footer-link">Event Planning Resources</a></li>
+            </ul>
+        </div>
+
+        <!-- Compare Section -->
+        <div class="footer-column">
+            <h4 class="footer-title">Compare Us</h4>
+            <ul class="footer-links">
+                <li><a href="#" class="footer-link">Eventbrite</a></li>
+                <li><a href="#" class="footer-link">Bizzabo</a></li>
+                <li><a href="#" class="footer-link">Attendify</a></li>
+                <li><a href="#" class="footer-link">Cvent</a></li>
+                <li><a href="#" class="footer-link">Hopin</a></li>
+                <li><a href="#" class="footer-link">Whova</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>© 2024 Eventzilla. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<script>
+function scrollToPlans() {
+        const plansSection = document.getElementById('plans');
+        plansSection.scrollIntoView({ behavior: 'smooth' });
+    }
+function toggleFAQ(button) {
+    const faqAnswer = button.nextElementSibling;
+    const icon = button.querySelector('.faq-icon');
+
+    if (faqAnswer.style.display === 'block') {
+        faqAnswer.style.display = 'none';
+        icon.textContent = '+';
+    } else {
+        faqAnswer.style.display = 'block';
+        icon.textContent = '-';
+    }
+}
+</script>
+
+
+{% endblock %}

@@ -37,3 +37,6 @@ def login_view(request):
             messages.error(request, "Invalid username or password.")
     return render(request, "login.html")
 
+def pricing_view(request):
+
+    return render(request, 'pricing.html')
