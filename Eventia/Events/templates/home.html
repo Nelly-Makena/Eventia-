@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+<section class="home-page">
+
+    <!-- Video Section -->
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="{% static 'Vedios/back_vid.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Section -->
+    <div class="video-overlay"></div>
+
+    <!-- Notification Bar Section -->
+    <div class="notification-bar">
+        <span>Host a professional webinar for free with JoinLive.</span>
+        <a href="https://www.joinlive.net/?utm_medium=network&utm_source=eventzilla&utm
+        _campaign=cross-brand-202406&utm_content=home-hdr">Learn more</a>
+    </div>
+
+    <!-- Content Section -->
+<div class="hero-section">
+        <div class="content">
+            <h1>All-in-one Event Registration and Marketing Platform</h1>
+            <p>Create and manage everything in one place for live, virtual or hybrid events.</p>
+                            <p>Find events near you</p>
+
+            <div class="buttons">
+                <a href="" class="btn primary">Create your Events </a>
+                <a href="{% url 'login' %}" class="btn secondary">Discover events </a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</section>
+{% endblock %}
