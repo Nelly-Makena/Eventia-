@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding-top: 80px; /* Navbar height adjustment */
+        background-color: #f8f9fa; /* Soft off-white background */
+        color: #333;
+    }
+
+    /* Brand Name Styling */
+    .brand-name {
+        font-family: 'Lobster', cursive; /* Elegant, logo-like font */
+        font-size: 4rem;
+        text-align: center;
+        color: transparent;
+        background-image: linear-gradient(90deg, #00c6ff, #0072ff); /* Gradient text */
+        background-clip: text;
+        -webkit-background-clip: text;
+        margin-bottom: 10px;
+    }
+
+    /* Top Highlight Section */
+    .top-highlight {
+        background-color: #1c1c1c; /* Dark background */
+        color: white;
+        padding: 60px 5%;
+        text-align: center;
+        border-bottom: 5px solid #0072ff; /* Blue accent border */
+    }
+
+    .top-highlight p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin: 20px auto;
+        max-width: 800px;
+        color: #ccc; /* Softer text color */
+    }
+
+   
+    /* Features Grid Section */
+    .features-grid {
+        background-color: #eaf4fc; /* Light blue background */
+        color: #333;
+        padding: 60px 20px;
+    }
+
+    .features-grid h2 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        color: #0072ff; /* Primary blue */
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .grid-item {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grid-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .grid-item img {
+        width: 80px;
+        margin-bottom: 15px;
+    }
+
+    .grid-item h3 {
+        font-size: 1.3rem;
+        color: #0072ff;
+    }
+
+    .grid-item p {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    /* Footer Section */
+    .footer-section {
+        background-color: #1c1c1c; /* Dark footer */
+        color: #ccc; /* Soft white text */
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .footer-section a {
+        color: #0072ff; /* Blue links */
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<!-- Top Highlight Section -->
+<div class="top-highlight">
+    <h1 class="brand-name">EVENTZILLA</h1>
+    <p>Discover premium solutions to streamline event management, fundraising, and training sessions. EVENTZILLA empowers you with innovative tools designed for maximum efficiency.</p>
+</div>
+
+
+<!-- Features Grid Section -->
+<div class="features-grid">
+    <h2>Additional Industrial  Features</h2>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="https://img.icons8.com/color/96/analytics.png" alt="Analytics">
+            <h3>Analytics</h3>
+            <p>Gain insights with real-time analytics for smarter decisions.</p>
+        </div>
+        <div class="grid-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/4281/4281580.png" alt="Automation">
+            <h3>Automation</h3>
+            <p>Save time with task automation across all processes.</p>
+        </div>
+        <div class="grid-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Security">
+            <h3>Security</h3>
+            <p>Protect your data with industry-standard encryption.</p>
+        </div>
+        <div class="grid-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Support">
+            <h3>24/7 Support</h3>
+            <p>Our team is here for you, anytime, anywhere.</p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer Section -->
+<div class="footer-section">
+    <p>© 2024 EVENTZILLA. All rights reserved. | <a href="#">Contact Us</a></p>
+</div>
+
+{% endblock %}

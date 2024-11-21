@@ -24,6 +24,8 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
 
 
 </head>
@@ -31,7 +33,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <!-- Logo -->
-        <img src="{% static 'img/exact_Logo.png' %}" alt="Event Company Logo" height="30">
+        <img src="{% static 'img/letter_E.png' %}" alt="Event Company Logo" height="30">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +45,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Platform</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="{% url 'features' %}">Features</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
