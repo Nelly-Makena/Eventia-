@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-
 def home_view(request):
 
     return render(request, 'home.html')
@@ -40,3 +39,12 @@ def login_view(request):
 def pricing_view(request):
 
     return render(request, 'pricing.html')
+
+def subscription_view(request):
+
+    return render(request, 'subscription.html')
+def submit_subscription_view(request):
+    if request.method == "POST":
+        messages.success(request, "Subscription successful! Thank you for subscribing.")
+        return redirect('subscription')
+    return render(request, 'subscription.html')
