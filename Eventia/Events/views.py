@@ -48,3 +48,8 @@ def submit_subscription_view(request):
         messages.success(request, "Subscription successful! Thank you for subscribing.")
         return redirect('subscription')
     return render(request, 'subscription.html')
+
+def features_view(request):
+    return render(request, 'features.html')
+
+
