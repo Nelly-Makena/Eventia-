@@ -25,11 +25,10 @@
 
     /* Top Highlight Section */
     .top-highlight {
-        background-color: #1c1c1c; /* Dark background */
         color: white;
         padding: 60px 5%;
         text-align: center;
-        border-bottom: 5px solid #0072ff; /* Blue accent border */
+        margin-bottom:1 rem;
     }
 
     .top-highlight p {
@@ -37,10 +36,10 @@
         line-height: 1.8;
         margin: 20px auto;
         max-width: 800px;
-        color: #ccc; /* Softer text color */
+        color:black; /* Softer text color */
     }
 
-   
+
     /* Features Grid Section */
     .features-grid {
         background-color: #eaf4fc; /* Light blue background */
@@ -109,6 +108,123 @@
     .footer-section a:hover {
         text-decoration: underline;
     }
+     .section-container {
+            max-width: 100%;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Heading and description */
+        .section-container h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-container p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Bullet list styling */
+        .feature-list {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            font-size: 1rem;
+            color: #007bff;
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+         .advanced-feature-section h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .advanced-feature-section p.subheading {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        /* Content wrapper styling */
+        .feature-content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        /* Image styling */
+        .image-container {
+            flex: 1;
+            max-width: 250px;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Text content styling */
+        .description-content {
+            flex: 2;
+            text-align: left;
+        }
+
+        .description-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .description-content p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
 </style>
 
 <!-- Top Highlight Section -->
@@ -116,6 +232,21 @@
     <h1 class="brand-name">EVENTZILLA</h1>
     <p>Discover premium solutions to streamline event management, fundraising, and training sessions. EVENTZILLA empowers you with innovative tools designed for maximum efficiency.</p>
 </div>
+
+
+<div class="section-container">
+    <h2>Tailor your registration experience</h2>
+    <p>Eventzilla provides a simple & mobile-friendly event registration experience that fully aligns with your brand and resonates with your attendees, speakers, exhibitors, and sponsors. No design skills required.</p>
+    <ul class="feature-list">
+        <li>Multiple registration flows based on attendee type</li>
+        <li>Self-service options to register, modify, cancel, and get refunds</li>
+        <li>Multi-track, multi-session registration</li>
+        <li>Automated wait lists and approvals</li>
+        <li>Customizable registration emails, session info, badges, and reminders</li>
+    </ul>
+    <a href="{% url 'subscription' %}" class="cta-button">Get Started Now</a>
+</div>
+
 
 
 <!-- Features Grid Section -->
