@@ -4,11 +4,11 @@
 
 <style>
     body {
-        font-family: 'Montserrat', sans-serif;
         margin: 0;
         padding-top: 80px; /* Navbar height adjustment */
-        background-color: #f8f9fa; /* Soft off-white background */
+        background-color: #fff; /* Soft off-white background */
         color: #333;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* Brand Name Styling */
@@ -29,6 +29,7 @@
         padding: 60px 5%;
         text-align: center;
         margin-bottom:1 rem;
+        background-color: rgb(245, 245, 245);
     }
 
     .top-highlight p {
@@ -37,6 +38,10 @@
         margin: 20px auto;
         max-width: 800px;
         color:black; /* Softer text color */
+        font-style:italic;
+
+
+
     }
 
 
@@ -108,30 +113,7 @@
     .footer-section a:hover {
         text-decoration: underline;
     }
-     .section-container {
-            max-width: 100%;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
 
-        /* Heading and description */
-        .section-container h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .section-container p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
 
         /* Bullet list styling */
         .feature-list {
@@ -224,6 +206,73 @@
             line-height: 1.6;
             margin-bottom: 1rem;
         }
+    .event-fea h1{
+        font-size: 36px;
+        text-align: center;
+        margin-top: 2rem;
+        font-weight: 600;
+        }
+    .event-fea p{
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 5rem;
+        margin-top:3rem;
+    }
+
+   .event-fea .side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    margin: 5rem 5rem 5rem 10rem; /* 10rem left margin */
+
+}
+    .words h2{
+        font-size: 30px;
+        margin-left: 2rem;
+        font-weight: 600;}
+    .words {
+            margin-top:3rem;
+    }
+    .insert{
+         margin: 8rem 12rem 8rem 12rem;
+    }
+    .attendee{
+        display:flex;
+        flex-direction:row;
+        margin: 8rem 25rem 8rem 25rem;
+
+    }
+
+
+    .attendee h2 {
+        font-size: 35px;
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+        font-weight: 600;
+}
+   .engauge {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(245, 245, 245);
+    padding: 3rem 6rem 3rem 4rem;
+}
+    .en-words{
+    margin-left: 15rem;
+    margin-right:2rem;
+}
+    .en-words h1{
+    margin-bottom:2rem;
+     font-size: 35px;
+     font-weight: 600;
+
+    }
+
+
+
+
+
+
 
 </style>
 
@@ -232,37 +281,41 @@
     <h1 class="brand-name">EVENTZILLA</h1>
     <p>Discover premium solutions to streamline event management, fundraising, and training sessions. EVENTZILLA empowers you with innovative tools designed for maximum efficiency.</p>
 </div>
-
-
-<div class="section-container">
-    <h2>Tailor your registration experience</h2>
-    <p>Eventzilla provides a simple & mobile-friendly event registration experience that fully aligns with your brand and resonates with your attendees, speakers, exhibitors, and sponsors. No design skills required.</p>
-    <ul class="feature-list">
-        <li>Multiple registration flows based on attendee type</li>
-        <li>Self-service options to register, modify, cancel, and get refunds</li>
-        <li>Multi-track, multi-session registration</li>
-        <li>Automated wait lists and approvals</li>
-        <li>Customizable registration emails, session info, badges, and reminders</li>
-    </ul>
-    <a href="{% url 'subscription' %}" class="cta-button">Get Started Now</a>
-</div>
-
-<div class="advanced">
-    <h1>Advanced features specifically designed for training and classes such as session management,
-        recurring course dates, partial payments, completion certificates and more.</h1>
-    <p>Advanced features specifically designed for training and classes such as session management,
-        recurring course dates, partial payments, completion certificates and more.</p>
-    <div class="words">
-    <h2>Send personalized email campaigns</h2>
-    <p>Promote your events and boost event attendance with our built-in email Marketing template.</p>
-    <p>Event organizers can import their contacts from Gmail, Yahoo, outlook or Excel sheet and send custom email invites to 1000 contacts for free.</p>
-    <p>Additional email credits can be purchased as needed.</p>
+<div class="event-fea">
+    <h1>Event hub features</h1>
+    <p>Deliver an engaging event experience for both your in-person and remote participants by creating an Event Hub.</p>
+    <div class="side">
+        <div class="pic">
+         <img src=" {% static 'img/fea-pik.png' %}">
         </div>
-    <div class="pik">
-
+        <div class="words">
+            <h2>Customizable Lobby Page</h2>
+            <p>Welcome your registered attendees to a stunning lobby page<br> where they can instantly preview the event they have just signed up for.<br>You can list event announcements & updates on which sessions are<br> coming up next and feature event speakers.</p>
+        </div>
+    </div>
+</div>
+<div class="insert">
+    <img src=" {% static 'img/insert.png' %}">
+</div>
+<div class="attendee">
+    <div class="phone">
+        <img src=" {% static 'img/phone.png' %}">
+    </div>
+    <div class="details">
+        <h2>1:1 Attendee Networking</h2>
+        <p>Creating connections and boosting engagement at events is easy with direct messaging. With Eventzilla, your attendees can message their peers before, during, and after the event to make sure they stay connected.</p>
     </div>
 </div>
 
+<div class="engauge">
+   <div class="en-words">
+       <h1>Advanced engagement analytics</h1>
+       <p>Find out how well your attendees are engaged with our<br>built-in analytics tools to track the number of clicks, <br>session views, and much more.</p>
+   </div>
+    <div class="cards">
+            <img src=" {% static 'img/cards.png' %}">
+    </div>
+</div>
 
 <!-- Features Grid Section -->
 <div class="features-grid">
