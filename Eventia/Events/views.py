@@ -52,4 +52,7 @@ def submit_subscription_view(request):
 def features_view(request):
     return render(request, 'features.html')
 
+def events_view(request):
+    return render(request, 'events.html')
+
 
