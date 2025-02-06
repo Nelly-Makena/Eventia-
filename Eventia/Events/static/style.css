@@ -1,4 +1,16 @@
 
+
+
+* {
+    all: unset;
+    font-family: Arial, sans-serif !important;
+}
+
+
+.btn, .nav-link, .dropdown-item {
+    font-family: Arial, sans-serif !important;
+}
+
 #background-video {
     position: fixed;
     top: 0;
@@ -9,8 +21,10 @@
     z-index: -2;
 }
 body {
-      padding-top: 10rem; /* Ensure the body content does not overlap with the fixed navbar */
-    }
+      padding-top: 10rem;
+}
+/* Ensure the body content does not overlap with the fixed navbar */
+
 /* Overlay styling */
 .video-overlay {
     position: fixed;
@@ -220,7 +234,7 @@ body {
 label {
     display: block;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: px;
     color: #333;
 }
 
@@ -508,6 +522,12 @@ input:focus {
 @media (max-width: 768px) {
     .registration-card {
         width: 90%; /* Expand card width on smaller screens */
+    }
+    .notification-bar {
+        display: none; /* Hide the notification bar on smaller screens */
+    }
+    .buttons {
+        height: 0.5rem; /* Adjust button height for smaller screens */
     }
 }
 

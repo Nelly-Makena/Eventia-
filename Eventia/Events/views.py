@@ -49,7 +49,11 @@ def submit_subscription_view(request):
         return redirect('subscription')
     return render(request, 'subscription.html')
 
-def features_view(request):
-    return render(request, 'features.html')
+
+
+def events_view(request):
+    return render(request, 'events.html')
+def help_view(request):
+    return render(request, 'help.html')
 
 

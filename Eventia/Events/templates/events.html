@@ -1,0 +1,379 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8; /* Light blue-grey background */
+        margin-top:8rem;
+        padding: 0;
+        color: #333;
+    }
+
+    /* Top section */
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 85%;
+        margin: 30px auto;
+    }
+
+    .left {
+        width: 60%;
+    }
+
+    .right {
+        width: 35%;
+    }
+
+    h1 {
+        color: #4a90e2;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .tagline {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .btn-list {
+        background: #4a90e2;
+        color: white;
+        padding: 14px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin-top: 20px;
+        transition: background 0.3s;
+    }
+
+    .btn-list:hover {
+        background: #357ab7;
+    }
+
+    .filter-form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .filter-form input,
+    .filter-form select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f7f7f7;
+    }
+
+    .submit-btn {
+        background: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+        background: #0056b3;
+    }
+
+    /* Event Section Styling */
+    .events-section {
+        width: 85%;
+        margin-top: 60px;
+        margin: 0 auto;
+    }
+
+    .event-category {
+        margin-bottom: 60px;
+    }
+
+    .category-title {
+        font-size: 32px;
+        color: #4a90e2;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .event-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .event-card {
+        background-color: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 25px;
+        width: 23%;
+        transition: all 0.3s ease;
+        text-align: center;
+        border: 2px solid #e1e1e1;
+        position: relative;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .event-card:hover {
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        border-color: #ff5722;
+    }
+
+    .event-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .event-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+    }
+
+    .event-details {
+        color: #777;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .event-date,
+    .event-location {
+        color: #007bff;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .view-event-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    .view-event-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Online Events Styling */
+    .online-events-section {
+        background-color: #f5f8fd;
+        padding: 30px;
+        margin-top: 60px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .online-events-section .category-title {
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .online-events-section .event-card-container {
+        gap: 15px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 1200px) {
+        .event-card {
+            width: 48%;
+        }
+
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .event-card {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="left">
+        <h1>EVENTIA</h1>
+        <p class="tagline">Discover thrilling events, exclusive experiences, and unforgettable moments – all in one place.</p>
+        <button class="btn-list">LIST YOUR EVENT</button>
+    </div>
+
+    <div class="right">
+        <form method="GET" class="filter-form">
+            <label>Event Type</label>
+            <select name="event_type">
+                <option value="">------</option>
+                <option value="concert">Concert</option>
+                <option value="conference">Conference</option>
+                <option value="festival">Festival</option>
+            </select>
+
+            <label>Location</label>
+            <select name="location">
+                <option value="">------</option>
+                <option value="nairobi">Nairobi</option>
+                <option value="mombasa">Mombasa</option>
+                <option value="kisumu">Kisumu</option>
+            </select>
+
+            <label>Price Range</label>
+            <input type="text" name="max_price" placeholder="Max price in KES">
+
+            <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+    </div>
+</div>
+
+<!-- Event Categories Section -->
+<div class="events-section">
+    <!-- Popular Events -->
+    <div class="event-category">
+        <h2 class="category-title">Popular Events</h2>
+        <div class="event-card-container">
+            <div class="event-card">
+                <img src="{% static 'img/rock.png' %}"  alt="Rock Concert">
+                <h3 class="event-title">Rock Concert Live</h3>
+                <p class="event-details">Experience an electrifying performance from top rock bands.</p>
+                <p class="event-date">Date: 15th February 2025</p>
+                <p class="event-location">Location: Nairobi</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src= "{% static 'img/fashion.png' %}" alt="Fashion Week">
+                <h3 class="event-title">Fashion Week Showcase</h3>
+                <p class="event-details">The latest trends in fashion from top designers.</p>
+                <p class="event-date">Date: 10th March 2025</p>
+                <p class="event-location">Location: Mombasa</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/food.jpg' %}" alt="Food Festival">
+                <h3 class="event-title">International Food Festival</h3>
+                <p class="event-details">A celebration of global cuisine from top chefs.</p>
+                <p class="event-date">Date: 5th April 2025</p>
+                <p class="event-location">Location: Kisumu</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+           <div class="event-card">
+        <img src="{% static 'img/musicc.jpg' %}" alt="Music Festival">
+        <h3 class="event-title">International Music Festival</h3>
+        <p class="event-details">A 3-day music festival featuring global artists.</p>
+        <p class="event-date">Date: 10th February 2025</p>
+        <p class="event-location">Location: Kisumu</p>
+        <button class="view-event-btn">View Event</button>
+</div>
+        </div>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="event-category">
+        <h2 class="category-title">Upcoming Events</h2>
+        <div class="event-card-container">
+            <div class="event-card">
+                <img src="{% static 'img/film.jpg' %}" alt="Film Screening">
+                <h3 class="event-title">Film Screening</h3>
+                <p class="event-details">Enjoy classic films in an open-air screening.</p>
+                <p class="event-date">Date: 18th February 2025</p>
+                <p class="event-location">Location: Nairobi</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/poetry.jpg' %}" alt="Poetry Reading">
+                <h3 class="event-title">Poetry Reading</h3>
+                <p class="event-details">An evening of heartfelt poetry by talented writers.</p>
+                <p class="event-date">Date: 22nd February 2025</p>
+                <p class="event-location">Location: Mombasa</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/tech.jpg' %}"alt="Tech Conference">
+                <h3 class="event-title">Tech Conference</h3>
+                <p class="event-details">Latest trends in technology and innovation.</p>
+                <p class="event-date">Date: 25th March 2025</p>
+                <p class="event-location">Location: Kisumu</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/rock.png' %}" alt="Music Festival">
+                <h3 class="event-title">Music Festival</h3>
+                <p class="event-details">The best music performances in an open-air venue.</p>
+                <p class="event-date">Date: 12th April 2025</p>
+                <p class="event-location">Location: Nairobi</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Online Events -->
+    <div class="online-events-section">
+        <h2 class="category-title">Online Events</h2>
+        <div class="event-card-container">
+            <div class="event-card">
+                <img src="{% static 'img/tech.jpg' %}" alt="Webinar">
+                <h3 class="event-title">Tech Webinar</h3>
+                <p class="event-details">Join us for a live online seminar on cutting-edge tech trends.</p>
+                <p class="event-date">Date: 30th January 2025</p>
+                <p class="event-location">Online</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/poetry.jpg' %}" alt="Online Workshop">
+                <h3 class="event-title">Creative Writing Workshop</h3>
+                <p class="event-details">Learn how to improve your writing skills in this interactive workshop.</p>
+                <p class="event-date">Date: 7th February 2025</p>
+                <p class="event-location">Online</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/business.jpg' %}"alt="Virtual Conference">
+                <h3 class="event-title">Business Growth Conference</h3>
+                <p class="event-details">Strategies for scaling your business in today's economy.</p>
+                <p class="event-date">Date: 20th February 2025</p>
+                <p class="event-location">Online</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+            <div class="event-card">
+                <img src="{% static 'img/fitness.jpg' %}" alt="Online Fitness">
+                <h3 class="event-title">Online Fitness Bootcamp</h3>
+                <p class="event-details">Get fit with live online fitness sessions.</p>
+                <p class="event-date">Date: 25th February 2025</p>
+                <p class="event-location">Online</p>
+                <button class="view-event-btn">View Event</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
