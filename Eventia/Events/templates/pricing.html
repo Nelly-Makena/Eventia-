@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-<style>
-    /* General Styling */
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font style */
-    }
 
+<style>
+    * {
+    font-family: Arial, sans-serif !important;
+}
     /* Intro Section Styling */
     .intro-section {
         background-color: #007BFF;
@@ -90,7 +88,6 @@
 
     .payment-plans h2 {
         font-size: 2.5rem;
-        font-family: 'Poppins', sans-serif; /* Modern font for headings */
         font-weight: bold;
         color: #333; /* Dark gray text */
         margin-bottom: 40px;
@@ -122,17 +119,15 @@
 
     .plan-title {
         font-size: 1.8rem; /* Larger title */
-        font-family: 'Poppins', sans-serif; /* Bold and modern font for titles */
         font-weight: bold;
         color: #007BFF; /* Blue for titles */
         margin-bottom: 20px;
     }
 
     .plan-price {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
         color: #333; /* Dark gray */
         margin: 15px 0; /* Adjusted margin */
-        font-family: 'Roboto', sans-serif; /* Clean font for price */
     }
 
     .plan-benefits {
@@ -183,7 +178,6 @@
     padding: 10px 20px; /* Reduced padding for smaller height */
     border-radius: 8px; /* Rounded corners */
     text-align: center; /* Center-align the text */
-    font-family: 'Roboto', sans-serif; /* Modern font */
     font-size: 0.9rem; /* Slightly smaller text size */
     color: #6c757d; /* Subtle gray text */
     margin: 20px auto; /* Center horizontally and add vertical spacing */
@@ -252,7 +246,6 @@
     background-color: #1c1c1c; /* Dark gray background */
     color: #fff; /* White text */
     padding: 50px 20px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* Footer Container */
@@ -371,14 +364,7 @@
 <div class="pricing-section">
     <h2>Compare our flexible plans and choose what works for your events</h2>
     <p>Avoid ticketing fees by passing them on to attendees</p>
-    <div class="ticket-currency">
-        <label for="currency">I want to sell tickets in</label>
-        <select id="currency">
-            <option value="USD">US Dollar</option>
-            <option value="KES">Kenyan Shilling</option>
-            <option value="EUR">Euro</option>
-        </select>
-    </div>
+
 </div>
 
    <div id="plans" class="payment-plans">
@@ -387,7 +373,7 @@
         <!-- Basic Plan -->
         <div class="plan-card plan-basic">
             <h3 class="plan-title">Basic Plan</h3>
-            <p class="plan-price">$9.99/month</p>
+            <p class="plan-price">$10/month</p>
             <ul class="plan-benefits">
                 <li>Access to 5 events</li>
                 <li>Email support</li>
@@ -406,7 +392,7 @@
         <!-- Pro Plan -->
         <div class="plan-card plan-pro">
             <h3 class="plan-title">Pro Plan</h3>
-            <p class="plan-price">$29.99/month</p>
+            <p class="plan-price">$20.0/month</p>
             <ul class="plan-benefits">
                 <li>Access to unlimited events</li>
                 <li>Priority customer support</li>
@@ -425,8 +411,8 @@
 
         <!-- Custom Plan -->
         <div class="plan-card plan-custom">
-            <h3 class="plan-title">Custom Plan</h3>
-            <p class="plan-price">Contact Us</p>
+            <h3 class="plan-title">Pro Plan</h3>
+            <p class="plan-price">$30.0/month</p>
             <ul class="plan-benefits">
                 <li>Tailored to your specific needs</li>
                 <li>Dedicated account manager</li>
@@ -439,7 +425,7 @@
                 <li>Training and onboarding for your team</li>
                 <li>Exclusive premium features</li>
             </ul>
-                     <button class="plan-button" onclick="window.location.href='{% url 'subscription' %}'">Contact US</button>
+                     <button class="plan-button" onclick="window.location.href='{% url 'subscription' %}'">Get Pro</button>
 
         </div>
     </div>
