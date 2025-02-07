@@ -1,10 +1,259 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
 
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        z-index: 10;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+        color: darkblue;
+        margin-top: 20px;
+    }
+
+    .search-bar {
+        width: 60%;
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        outline: none;
+        margin-top: 20px;
+    }
+
+    .filters {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .filter {
+        font-weight: bold;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .filter.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: darkblue;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+
+    .articles {
+        margin-top: 40px;
+        text-align: left;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .article-link {
+        text-decoration: none;
+        color: black; /* Ensures the text color stays black */
+    }
+
+    .article {
+        padding: 15px;
+        background: white;
+        border: 2px solid gray;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 1.2rem;
+        cursor: pointer;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: left;
+        gap: 10px;
+        transition: background 0.3s;
+        text-decoration: none; /* Remove underline */
+        color: black; /* Set link color */
+    }
+
+    .article:hover {
+        background: #f0f0f0;
+    }
+
+    .article-icon {
+        font-size: 1.5rem;
+    }
+
+    .contact-section {
+        margin-top: 60px;
+    }
+
+    .contact-section p {
+        font-size: 1.2rem;
+        color: black;
+        font-weight: bold;
+    }
+
+    .contact-btn {
+        padding: 15px 30px;
+        background-color: #ADD8E6;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        transition: background-color 0.3s;
+    }
+
+    .contact-btn:hover {
+        background-color: #87CEFA;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 3rem;
+        }
+
+        .search-bar {
+            width: 80%;
+        }
+
+        .filters {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .articles {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .article {
+            height: 100px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .search-bar {
+            width: 90%;
+        }
+
+        .articles {
+            grid-template-columns: 1fr;
+        }
+
+        .article {
+            height: 120px;
+        }
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <h1>How can we help?</h1>
+        <input type="text" class="search-bar" placeholder="Search help articles" oninput="filterArticles()">
+        <div class="filters">
+            <span class="filter active" onclick="setCategory('attending', this)">Attending an Event</span>
+            <span class="filter" onclick="setCategory('organizing', this)">Organizing an Event</span>
+        </div>
+        <div class="articles" id="articles"></div>
+
+        <div class="contact-section">
+            <p>Do you have any questions?</p>
+            <button class="contact-btn">Contact Us</button>
+        </div>
+    </div>
+
+    <script>
+        const helpData = {
+            attending: [
+                { text: "Where are my tickets?", link: "https://community.eventzilla.net/" },
+                { text: "Request a refund", link: "https://community.eventzilla.net/" }, // Example link
+                { text: "Contact the event organizer", link: "https://community.eventzilla.net/" },
+                { text: "What is this charge from Eventzilla?", link: "https://community.eventzilla.net/" },
+                { text: "Transfer tickets to someone else", link: "https://community.eventzilla.net/" },
+                { text: "Edit your order information", link: "https://community.eventzilla.net/" },
+            ],
+            organizing: [
+                { text: "Create an event", link: "https://community.eventzilla.net/" },
+                { text: "Manage ticket sales", link: "https://community.eventzilla.net/" },
+                { text: "Promote your event", link: "https://community.eventzilla.net/" },
+                { text: "Check-in attendees", link: "https://community.eventzilla.net/" },
+                { text: "Analyze event performance", link: "https://community.eventzilla.net/" },
+                { text: "Set up online events", link: "https://community.eventzilla.net/" },
+            ],
+        };
+
+        let currentCategory = "attending";
+
+        function setCategory(category, element) {
+            currentCategory = category;
+            document.querySelectorAll('.filter').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            displayArticles();
+        }
+
+        function filterArticles() {
+            const query = document.querySelector('.search-bar').value.toLowerCase();
+            displayArticles(query);
+        }
+
+        function displayArticles(filter = "") {
+            const articlesContainer = document.getElementById("articles");
+            articlesContainer.innerHTML = "";
+
+            helpData[currentCategory].forEach(article => {
+                if (article.text.toLowerCase().includes(filter)) {
+                    const div = document.createElement("div");
+                    div.classList.add("article");
+
+                    const link = document.createElement("a");
+                    link.href = article.link; // External link destination
+                    link.classList.add("article-link");
+                    link.target = "_blank"; // Opens the link in a new tab
+
+                    const icon = document.createElement("span");
+                    icon.classList.add("article-icon");
+                    icon.textContent = "📄";
+
+                    const text = document.createElement("span");
+                    text.textContent = article.text;
+
+                    link.appendChild(icon);
+                    link.appendChild(text);
+                    div.appendChild(link);
+
+                    articlesContainer.appendChild(div);
+                }
+            });
+        }
+
+        displayArticles();
+    </script>
 </body>
+
+{% endblock %}
 </html>
