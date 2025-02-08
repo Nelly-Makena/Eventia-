@@ -8,6 +8,7 @@ body {
     padding-top: 10rem;
     font-family: Arial, sans-serif !important;
     background-color: #f8f9fa;
+
 }
 
 /* General Button and Link Styling */
@@ -39,76 +40,6 @@ a:hover {
 }
 
 /* Registration Form Styling */
-.registration-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.registration-card {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 400px;
-    padding: 30px 40px;
-    text-align: center;
-}
-
-.registration-header {
-    margin-bottom: 30px;
-}
-
-.registration-logo {
-    width: 60px;
-    margin-bottom: 10px;
-}
-
-.registration-footer {
-    margin-top: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    font-size: 17px;
-    margin-bottom: 5px;
-}
-
-input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #f8f9fa;
-    transition: border-color 0.3s ease;
-}
-
-input:focus {
-    border-color: #00b4d8;
-    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
-    outline: none;
-}
-
-.btn-submit {
-    width: 100%;
-    background-color: #00b4d8;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-.btn-submit:hover {
-    background-color: #0077b6;
-}
 
 /* Notification Bar Styling */
 .notification-bar {
@@ -168,100 +99,3 @@ input:focus {
 }
 
 /* Card Styling */
-.card {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.card-header {
-    font-size: 1.25rem;
-    text-transform: uppercase;
-}
-
-.form-control {
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #00b4d8;
-    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
-}
-
-/* Alert Messages */
-.alert-danger {
-    background-color: #f8d7da;
-    border-color: #f5c2c7;
-    color: #842029;
-}
-
-/* Input Fields Styling */
-input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    background-color: #f8f9fa;
-}
-
-input:focus {
-    border-color: #00b4d8;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
-}
-
-/* Submit Button Styling */
-.btn-primary {
-    background-color: #00b4d8;
-    color: white;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #0077b6;
-}
-
-/* Logo and Header Styling */
-.login-header .logo {
-    width: 60px;
-    margin-bottom: 20px;
-}
-
-.login-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    padding: 50px 40px;
-    margin-left: 45rem;
-    text-align: center;
-}
-
-/* Additional Styling */
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 17px;
-    color: #333;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    background-color: #f8f9fa;
-}
-
-input:focus {
-    border-color: #00b4d8;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
-}

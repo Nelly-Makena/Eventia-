@@ -6,29 +6,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-          crossorigin="anonymous">
-        <link href="{% static 'style.css' %}" rel="stylesheet">
-
     <style>
-       * {
-    font-family: Arial, sans-serif !important;
-}
-        label{
-         font-size: 17px;}
+        * {
+            font-family: Arial, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            flex-direction: column;
+            margin-top: 60px; /* To prevent the navbar from overlapping the content */
+        }
+
+        .plain-navbar {
+            width: 100%;
+            background-color: #e6f7ff; /* Very light blue background */
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 5px 15px; /* Reduced padding for a thinner navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure navbar is above other content */
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: flex-start; /* Align logo to the left */
+            align-items: center;
+        }
+
+        .navbar-logo {
+            width: 40px; /* Smaller logo */
+        }
+
+        .registration-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .registration-card {
+            background: white;
+            padding: 4rem; /* Increased padding to make the form bigger */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px; /* Increased the max-width */
+            width: 100%;
+            height: auto; /* Ensures the card expands vertically */
+        }
+
+        .registration-logo {
+            width: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem; /* Increased spacing between form groups */
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px; /* Increased font size */
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px; /* Increased padding for larger input fields */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            color: white;
+            padding: 15px; /* Increased padding for a bigger button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .btn-submit:hover {
+            background-color: #025ce2;
+        }
+
+        .registration-footer {
+            margin-top: 1rem;
+        }
+
+        /* Style for the Sign In link */
+        .registration-footer a {
+            color: #0d6efd;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .registration-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .registration-card {
+                width: 90%;
+                padding: 3rem; /* Slightly reduce padding for smaller screens */
+            }
+
+            .navbar-logo {
+                width: 35px; /* Further reduce the size of the logo on smaller screens */
+            }
+        }
     </style>
 </head>
+{% block body %}
+
 <body>
     <nav class="plain-navbar">
         <div class="navbar-container">
-            <a href="#">
+            <a href="{% url 'home' %}"> <!-- Link to home page when clicking the logo -->
                 <img src="{% static 'img/letter_E.png' %}" alt="Logo" class="navbar-logo" />
             </a>
         </div>
     </nav>
 
-    {% block body %}
     <div class="registration-container">
         <div class="registration-card">
             <div class="registration-header">
@@ -64,13 +175,11 @@
             </div>
         </div>
     </div>
-    {% endblock %}
 
-    {% block extra_js %}
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    {% endblock %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
 </body>
 </html>
