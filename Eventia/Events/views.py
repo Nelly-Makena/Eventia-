@@ -5,44 +5,79 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
+
+
+
 
 def home_view(request):
 
     return render(request, 'home.html')
+
 
 def register_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        if not User.objects.filter(username=username).exists():
-            User.objects.create_user(username=username, email=email, password=password)
-            return redirect('login')  # Redirect to sign-in after successful signup
-        else:
-            return render(request, 'register.html', {'error': 'Username already exists!'})
+        password_confirm = request.POST['password_confirm']  # Add a password confirmation field
+
+        # Check if passwords match
+        if password != password_confirm:
+            messages.error(request, 'Passwords do not match!')
+            return render(request, 'register.html')
+
+        # Check if username exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already exists!')
+            return render(request, 'register.html')
+
+        # Create user
+        User.objects.create_user(username=username, email=email, password=password)
+        messages.success(request, 'Registration successful! Please log in.')
+        return redirect('login')  # Redirect to login after successful signup
+
     return render(request, 'register.html')
 
 
 # Sign In View
 def login_view(request):
+
+
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
+
+        # Basic form validation
+        if not username or not password:
+            messages.error(request, "Username and password are required.")
+            return render(request, "login.html")
+
+        # Authenticate the user
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
-            return redirect('home')  # Replace with your homepage URL name
+            return redirect('events')  # Redirect to homepage after successful login
         else:
             messages.error(request, "Invalid username or password.")
+            return render(request, "login.html")
+
     return render(request, "login.html")
 
+@login_required
 def pricing_view(request):
 
     return render(request, 'pricing.html')
 
+@login_required
 def subscription_view(request):
 
     return render(request, 'subscription.html')
+@login_required
 def submit_subscription_view(request):
     if request.method == "POST":
         messages.success(request, "Subscription successful! Thank you for subscribing.")
@@ -51,9 +86,13 @@ def submit_subscription_view(request):
 
 
 
+@login_required
 def events_view(request):
     return render(request, 'events.html')
+@login_required
 def help_view(request):
     return render(request, 'help.html')
 
-
+def logout_view(request):
+    logout(request)
+    return redirect('home')

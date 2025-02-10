@@ -31,7 +31,11 @@
 
             <div class="buttons">
                 <a href="" class="btn primary">Create your Events </a>
-                <a href="{% url 'login' %}" class="btn secondary">Discover events </a>
+                 {% if user.is_authenticated %}
+        <a class="btn btn-outline-primary" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a class="btn btn-outline-primary" href="{% url 'login' %}">Discover Events</a>
+    {% endif %}
             </div>
 
         </div>

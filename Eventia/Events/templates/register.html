@@ -146,6 +146,15 @@
                 <img src="{% static 'img/letter_E.png' %}" alt="Logo" class="registration-logo" />
                 <h2>Register</h2>
             </div>
+            {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
             <form method="POST" action="{% url 'register' %}" id="registration-form">
                 {% csrf_token %}
                 <div class="form-group">
@@ -164,10 +173,11 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
-                    <small id="confirm-password-help" class="form-text"></small>
-                </div>
+    <label for="password_confirm">Confirm Password</label>
+    <input type="password" name="password_confirm" id="password_confirm" placeholder="Confirm your password" required>
+</div>
+
+
                 <button type="submit" class="btn-submit">Register</button>
             </form>
             <div class="registration-footer">
