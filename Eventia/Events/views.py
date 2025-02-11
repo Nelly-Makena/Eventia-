@@ -103,16 +103,16 @@ def listing_view(request):
         return redirect('profile')
 
     if request.method == 'POST':
-        form = EventForm(request.POST, request.FILES)
+        form = EventListingForm(request.POST, request.FILES)
         if form.is_valid():
             event = form.save(commit=False)
-            event.organizer = organizer  # Assign the organizer
+            event.organizer = organizer
             event.save()
             return redirect('events')
     else:
-        form = EventForm()
+        form = EventListingForm()
 
-    return render(request, 'listing.html', {'form': form})
+    return render(request, 'listing.html', {'EventListingForm': EventListingForm})
 
 @login_required
 def organizer_profile(request):
@@ -130,4 +130,4 @@ def organizer_profile(request):
     else:
         form = EventOrganizerForm()
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'profile.html', {'EventOrganizerForm': EventOrganizerForm})

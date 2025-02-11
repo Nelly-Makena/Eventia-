@@ -6,13 +6,13 @@ class EventOrganizer(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     organization_name = models.CharField(max_length=255)
-    profile_picture = models.ImageField(upload_to='organizer_profiles/', null=False, blank=False)
     bio = models.TextField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
     location = models.CharField(max_length=255, help_text="City or Region")
 
     def __str__(self):
         return self.organization_name
+
 
 class Event(models.Model):
     EVENT_TYPE = (
@@ -27,13 +27,13 @@ class Event(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
-    event_picture = models.ImageField(upload_to='event_images/', null=False, blank=False)
     date = models.DateTimeField()
     location = models.CharField(max_length=255)
     location_type = models.CharField(max_length=10, choices=LOCATION_TYPE)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     event_type = models.CharField(max_length=10, choices=EVENT_TYPE)
-    organizer = models.ForeignKey(EventOrganizer, on_delete=models.CASCADE, related_name="events")
+    organizer = models.ForeignKey('EventOrganizer', on_delete=models.CASCADE, related_name="events")
 
     def __str__(self):
         return self.title
+
