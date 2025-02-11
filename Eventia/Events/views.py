@@ -7,10 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
-
-
-
+from .forms import EventOrganizerForm
+from .models import EventOrganizer
 
 def home_view(request):
 
@@ -96,3 +94,40 @@ def help_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@login_required
+def listing_view(request):
+    try:
+        organizer = EventOrganizer.objects.get(user=request.user)
+    except EventOrganizer.DoesNotExist:
+        return redirect('profile')
+
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.organizer = organizer  # Assign the organizer
+            event.save()
+            return redirect('events')
+    else:
+        form = EventForm()
+
+    return render(request, 'listing.html', {'form': form})
+
+@login_required
+def organizer_profile(request):
+    # Check if user already has a profile
+    if EventOrganizer.objects.filter(user=request.user).exists():
+        return redirect('listing')  # Redirect to event listing if profile exists
+
+    if request.method == 'POST':
+        form = EventOrganizerForm(request.POST, request.FILES)
+        if form.is_valid():
+            organizer = form.save(commit=False)
+            organizer.user = request.user  # Assign the logged-in user
+            organizer.save()
+            return redirect('listing')
+    else:
+        form = EventOrganizerForm()
+
+    return render(request, 'profile.html', {'form': form})
