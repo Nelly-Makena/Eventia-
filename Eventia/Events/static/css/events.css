@@ -1,0 +1,217 @@
+body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8; /* Light blue-grey background */
+        margin-top:8rem;
+        padding: 0;
+        color: #333;
+    }
+
+    /* Top section */
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 85%;
+        margin: 30px auto;
+    }
+
+    .left {
+        width: 60%;
+    }
+
+    .right {
+        width: 35%;
+    }
+
+    h1 {
+        color: #4a90e2;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .tagline {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .btn-list {
+        background: #4a90e2;
+        color: white;
+        padding: 14px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin-top: 20px;
+        transition: background 0.3s;
+    }
+
+    .btn-list:hover {
+        background: #357ab7;
+    }
+
+    .filter-form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .filter-form input,
+    .filter-form select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f7f7f7;
+    }
+
+    .submit-btn {
+        background: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+        background: #0056b3;
+    }
+
+    /* Event Section Styling */
+    .events-section {
+        width: 85%;
+        margin-top: 60px;
+        margin: 0 auto;
+    }
+
+    .event-category {
+        margin-bottom: 60px;
+    }
+
+    .category-title {
+        font-size: 32px;
+        color: #4a90e2;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .event-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .event-card {
+        background-color: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 25px;
+        width: 23%;
+        transition: all 0.3s ease;
+        text-align: center;
+        border: 2px solid #e1e1e1;
+        position: relative;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .event-card:hover {
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        border-color: #ff5722;
+    }
+
+    .event-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .event-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+    }
+
+    .event-details {
+        color: #777;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .event-date,
+    .event-location {
+        color: #007bff;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .view-event-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+    .view-event-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Online Events Styling */
+    .online-events-section {
+        background-color: #f5f8fd;
+        padding: 30px;
+        margin-top: 60px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .online-events-section .category-title {
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .online-events-section .event-card-container {
+        gap: 15px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 1200px) {
+        .event-card {
+            width: 48%;
+        }
+
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .event-card {
+            width: 100%;
+        }
+    }

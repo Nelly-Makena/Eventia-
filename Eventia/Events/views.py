@@ -112,7 +112,7 @@ def listing_view(request):
     else:
         form = EventListingForm()
 
-    return render(request, 'listing.html', {'EventListingForm': EventListingForm})
+    return render(request, 'listing.html', {'EventListingForm':form})
 
 @login_required
 def organizer_profile(request):
@@ -130,4 +130,4 @@ def organizer_profile(request):
     else:
         form = EventOrganizerForm()
 
-    return render(request, 'profile.html', {'EventOrganizerForm': EventOrganizerForm})
+    return render(request,'profile.html', {'EventOrganizerForm':form})

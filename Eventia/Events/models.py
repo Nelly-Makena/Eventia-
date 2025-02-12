@@ -6,6 +6,7 @@ class EventOrganizer(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     organization_name = models.CharField(max_length=255)
+    profile_picture = models.ImageField(upload_to='organizer_profiles/', null=True, blank=True)
     bio = models.TextField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
     location = models.CharField(max_length=255, help_text="City or Region")
@@ -27,6 +28,7 @@ class Event(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
+    event_picture = models.ImageField(upload_to='event_images/', null=True, blank=True)
     date = models.DateTimeField()
     location = models.CharField(max_length=255)
     location_type = models.CharField(max_length=10, choices=LOCATION_TYPE)
