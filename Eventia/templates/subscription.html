@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<link href="{% static 'css/sub.css' %}" rel="stylesheet">
+
+
+<div class="form-container">
+    <h1>Subscribe Now</h1>
+    <form action="{% url 'submit_subscription' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" placeholder="Example: 254xxxxxxx" required>
+
+        <label for="plan">Subscription Plan *</label>
+        <select id="plan" name="plan" required>
+            <option value="" disabled selected>Select a plan</option>
+            <option value="basic">Basic - $10/month</option>
+            <option value="pro">Pro - $20/month</option>
+            <option value="plus">Plus - $30/month</option>
+        </select>
+
+        <label>
+            <input type="checkbox" name="terms" required>
+            I agree to the <a href="#" style="color: #00bfff;">Terms of Service</a> and <a href="#" style="color: #00bfff;">Privacy Policy</a>
+        </label>
+
+        <button type="submit" class="submit-btn">Subscribe</button>
+    </form>
+    <div id="success-message" style="display: none; background-color: #4CAF50; color: white; padding: 10px; margin-top: 15px; border-radius: 5px;">
+        Subscription successful! Thank you for subscribing.
+    </div>
+    <small>Secure payment options available at checkout.</small>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent actual form submission for demo purposes
+
+        // Show success message
+        const successMessage = document.getElementById('success-message');
+        successMessage.style.display = 'block';
+
+        // Optionally, redirect after a delay
+        setTimeout(() => {
+            window.location.href = '/pricing'; // Replace with your actual success page URL
+        }, 3000);
+    });
+</script>
+
+{% endblock %}

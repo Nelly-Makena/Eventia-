@@ -1,0 +1,13 @@
+<!--{% extends 'base.html' %}-->
+<!--{% load static %}-->
+
+<!--{% block content %}-->
+<h2>Create Your Event Organizer Profile</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{EventOrganizerForm}}
+
+    <button type="submit">Submit</button>
+</form>
+<!--{% endblock %}-->

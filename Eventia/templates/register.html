@@ -1,0 +1,75 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+<link href="{% static 'css/reg.css' %}" rel="stylesheet">
+</head>
+{% block body %}
+
+<body>
+    <nav class="plain-navbar">
+        <div class="navbar-container">
+            <a href="{% url 'home' %}"> <!-- Link to home page when clicking the logo -->
+                <img src="{% static 'img/letter_E.png' %}" alt="Logo" class="navbar-logo" />
+            </a>
+        </div>
+    </nav>
+
+    <div class="registration-container">
+        <div class="registration-card">
+            <div class="registration-header">
+                <img src="{% static 'img/letter_E.png' %}" alt="Logo" class="registration-logo" />
+                <h2>Register</h2>
+            </div>
+            {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+            <form method="POST" action="{% url 'register' %}" id="registration-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <small id="password-help" class="form-text">
+                        Password must be at least 8 characters, contain uppercase, lowercase, a number, and a special character.
+                    </small>
+                </div>
+                <div class="form-group">
+    <label for="password_confirm">Confirm Password</label>
+    <input type="password" name="password_confirm" id="password_confirm" placeholder="Confirm your password" required>
+</div>
+
+
+                <button type="submit" class="btn-submit">Register</button>
+            </form>
+            <div class="registration-footer">
+                <p>Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+
+<section class="home-page">
+
+    <!-- Video Section -->
+    <!-- Video Section -->
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="{% static 'Vedios/back_vid.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- Overlay Section -->
+    <div class="video-overlay"></div>
+
+    <!-- Notification Bar Section -->
+    <div class="notification-bar">
+        <span>Host a professional webinar for free with JoinLive.</span>
+        <a href="https://www.joinlive.net/?utm_medium=network&utm_source=eventzilla&utm_campaign=cross-brand-202406&utm_content=home-hdr">
+            Learn more
+        </a>
+    </div>
+
+    <!-- Content Section -->
+    <div class="hero-section">
+        <div class="content">
+            <h1>All-in-one Event Registration and Marketing Platform</h1>
+            <p>Create and manage everything in one place for live, virtual, or hybrid events.</p>
+            <p>Find events near you</p>
+
+            <div class="buttons">
+              {% if request.user.is_authenticated %}
+    {% if request.user.eventorganizer %}
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'events' %}';">
+            Create Your Events
+        </button>
+    {% else %}
+        <button class="btn btn-outline-primary" onclick="window.location.href='{% url 'profile' %}';">
+            Create Organizer Profile
+        </button>
+    {% endif %}
+{% else %}
+    <button class="btn btn-outline-info" onclick="window.location.href='{% url 'login' %}';">
+        Login to Create Events
+    </button>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Discover Events</a>
+{% endif %}
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}

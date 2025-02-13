@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link href="{% static 'css/help.css' %}" rel="stylesheet">
+
+    <div class="container">
+        <h1>How can we help?</h1>
+        <input type="text" class="search-bar" placeholder="Search help articles" oninput="filterArticles()">
+        <div class="filters">
+            <span class="filter active" onclick="setCategory('attending', this)">Attending an Event</span>
+            <span class="filter" onclick="setCategory('organizing', this)">Organizing an Event</span>
+        </div>
+        <div class="articles" id="articles"></div>
+
+        <div class="contact-section">
+            <p>Do you have any questions?</p>
+            <button class="contact-btn">Contact Us</button>
+        </div>
+    </div>
+
+    <script>
+        const helpData = {
+            attending: [
+                { text: "Where are my tickets?", link: "https://community.eventzilla.net/" },
+                { text: "Request a refund", link: "https://community.eventzilla.net/" }, // Example link
+                { text: "Contact the event organizer", link: "https://community.eventzilla.net/" },
+                { text: "What is this charge from Eventzilla?", link: "https://community.eventzilla.net/" },
+                { text: "Transfer tickets to someone else", link: "https://community.eventzilla.net/" },
+                { text: "Edit your order information", link: "https://community.eventzilla.net/" },
+            ],
+            organizing: [
+                { text: "Create an event", link: "https://community.eventzilla.net/" },
+                { text: "Manage ticket sales", link: "https://community.eventzilla.net/" },
+                { text: "Promote your event", link: "https://community.eventzilla.net/" },
+                { text: "Check-in attendees", link: "https://community.eventzilla.net/" },
+                { text: "Analyze event performance", link: "https://community.eventzilla.net/" },
+                { text: "Set up online events", link: "https://community.eventzilla.net/" },
+            ],
+        };
+
+        let currentCategory = "attending";
+
+        function setCategory(category, element) {
+            currentCategory = category;
+            document.querySelectorAll('.filter').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            displayArticles();
+        }
+
+        function filterArticles() {
+            const query = document.querySelector('.search-bar').value.toLowerCase();
+            displayArticles(query);
+        }
+
+        function displayArticles(filter = "") {
+            const articlesContainer = document.getElementById("articles");
+            articlesContainer.innerHTML = "";
+
+            helpData[currentCategory].forEach(article => {
+                if (article.text.toLowerCase().includes(filter)) {
+                    const div = document.createElement("div");
+                    div.classList.add("article");
+
+                    const link = document.createElement("a");
+                    link.href = article.link; // External link destination
+                    link.classList.add("article-link");
+                    link.target = "_blank"; // Opens the link in a new tab
+
+                    const icon = document.createElement("span");
+                    icon.classList.add("article-icon");
+                    icon.textContent = "📄";
+
+                    const text = document.createElement("span");
+                    text.textContent = article.text;
+
+                    link.appendChild(icon);
+                    link.appendChild(text);
+                    div.appendChild(link);
+
+                    articlesContainer.appendChild(div);
+                }
+            });
+        }
+
+        displayArticles();
+    </script>
+
+{% endblock %}
+</html>

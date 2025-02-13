@@ -1,0 +1,13 @@
+<!--{% extends 'base.html' %}-->
+<!--{% load static %}-->
+
+<!--{% block content %}-->
+<h2>List Your Event</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{EventListingForm}}
+
+    <button type="submit">Submit</button>
+</form>
+<!--{% endblock %}-->
